@@ -1,6 +1,8 @@
 package es.murallaromana.pmdm.adapters
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import com.squareup.picasso.Picasso
 import es.murallaromana.pmdm.R
 import es.murallaromana.pmdm.activities.detalleActivity
 import es.murallaromana.pmdm.model.entidades.Pelicula
+import kotlin.coroutines.coroutineContext
 
 class ListaPeliculasAdapter(val peliculas : List<Pelicula>, val activity: Activity) :
     RecyclerView.Adapter<ListaPeliculasAdapter.PeliculaHolder>(){
@@ -50,9 +53,17 @@ class ListaPeliculasAdapter(val peliculas : List<Pelicula>, val activity: Activi
 
 
         holder.itemLista.setOnClickListener() {
+            /* val mensaje = AlertDialog.Builder(context)
+            mensaje.setTitle("Pelicula")
+            mensaje.setMessage("Que quieres hacer")
+            mensaje.setPositiveButton("Ver los detalles de la película"){ dialogInterface, i ->*/
+
             val intent = Intent(activity,detalleActivity::class.java)
             intent.putExtra("pelicula",pelicula)
             activity.startActivity(intent)
+
+
+
         }
 
     }
