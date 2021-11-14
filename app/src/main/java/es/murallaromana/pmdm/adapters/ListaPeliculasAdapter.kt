@@ -38,10 +38,10 @@ class ListaPeliculasAdapter(val peliculas : List<Pelicula>, val activity: Activi
     override fun onBindViewHolder(holder: PeliculaHolder, position: Int) {
         val pelicula = peliculas.get(position)
 
-        holder.txtGenero.text= pelicula.genero
-        holder.txtTitulo.text= pelicula.titulo
-        holder.txtNota.text= pelicula.nota
-        holder.txtAutor.text= pelicula.autor
+        holder.txtGenero.text= "Género: "+pelicula.genero
+        holder.txtTitulo.text= "Título: "+pelicula.titulo
+        holder.txtNota.text= "Nota: "+pelicula.nota
+        holder.txtAutor.text= "Autor: "+pelicula.autor
 
         //Libreria picasso
         Picasso.get().load(pelicula.url).into(holder.imagen)

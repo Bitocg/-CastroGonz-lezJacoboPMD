@@ -17,7 +17,12 @@ class detalleActivity : AppCompatActivity() {
 
         val pelicula = intent.extras?.get("pelicula")as Pelicula
 
-        binding.txtDetalleTitulo.setText(pelicula.titulo)
+        binding.txtDetalleTitulo.setText("Título: "+pelicula.titulo)
+        binding.txtDetalleAutor.setText("Autor: "+pelicula.autor)
+        binding.txtDetalleGenero.setText("Género: "+pelicula.genero)
+        binding.txtDetalleNota.setText("Nota: "+pelicula.nota)
+        binding.txtDetalleTelefono.setText("Teléfono: "+pelicula.telefono)
+
         Picasso.get().load(pelicula.url).into(binding.DetalleImagen)
 
     }
