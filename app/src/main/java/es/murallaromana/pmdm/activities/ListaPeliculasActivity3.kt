@@ -22,12 +22,12 @@ class ListaPeliculasActivity3 : AppCompatActivity() {
         biding3 = ActivityListaMain3Binding.inflate(layoutInflater)
         setContentView(biding3.root)
 
-        // boton añadir
-        // var añadir = biding3.btAnhadir
-        // cuando pulse el boton añadir
-        //añadir.setOnClickListener(){
+         // boton añadir
+         var añadir = biding3.btAnhadir
+         //cuando pulse el boton añadir
+         añadir.setOnClickListener(){
 
-        //}
+         }
 
         // Asigno un LayoutManager vertical
         biding3.rvListaPeliculas.layoutManager=LinearLayoutManager(this)
