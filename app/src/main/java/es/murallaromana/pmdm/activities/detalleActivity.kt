@@ -10,6 +10,7 @@ import es.murallaromana.pmdm.model.entidades.Pelicula
 
 class detalleActivity : AppCompatActivity() {
     private  lateinit var binding: ActivityDetalleBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityDetalleBinding.inflate(layoutInflater)

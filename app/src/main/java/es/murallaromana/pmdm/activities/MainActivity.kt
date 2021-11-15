@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.btRegistro.setOnClickListener{  //cuando pulsemos el boton registro
             startActivity(registro) //llamamos a la pantalla de registro
-            binding.textoContra
         }
 
         val lista= Intent(this, ListaPeliculasActivity3::class.java) //para llamar a la pantalla de lista

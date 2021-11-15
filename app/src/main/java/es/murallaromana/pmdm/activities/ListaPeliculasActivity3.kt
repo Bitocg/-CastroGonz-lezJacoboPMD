@@ -1,5 +1,6 @@
 package es.murallaromana.pmdm.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,9 +25,10 @@ class ListaPeliculasActivity3 : AppCompatActivity() {
 
          // boton añadir
          var añadir = biding3.btAnhadir
+         val añadirPeli= Intent(this, AnhadirPeliculaActivity::class.java) //para llamar a la pantalla de detalle
          //cuando pulse el boton añadir
          añadir.setOnClickListener(){
-
+            startActivity(añadirPeli)
          }
 
         // Asigno un LayoutManager vertical
@@ -38,7 +40,7 @@ class ListaPeliculasActivity3 : AppCompatActivity() {
 
         // Le paso la lista
         val layoutManager = LinearLayoutManager(this)
-        var adapter = ListaPeliculasAdapter(listapeliculas,this)
+        var adapter = ListaPeliculasAdapter(listapeliculas,this,this)
 
         //
         biding3.rvListaPeliculas.adapter = adapter
