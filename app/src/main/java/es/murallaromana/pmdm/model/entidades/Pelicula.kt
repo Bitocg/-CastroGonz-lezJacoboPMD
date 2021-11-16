@@ -8,7 +8,8 @@ class Pelicula (
     var genero: String,
     var nota: String,
     var telefono: String,
-    var url: String
+    var url: String,
+    var resumen: String,
         ):Serializable{
 
 

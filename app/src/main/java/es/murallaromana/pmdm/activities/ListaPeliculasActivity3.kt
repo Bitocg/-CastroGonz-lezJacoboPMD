@@ -1,5 +1,6 @@
 package es.murallaromana.pmdm.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +13,7 @@ import es.murallaromana.pmdm.model.dao.PeliculaDao
 import es.murallaromana.pmdm.model.dao.PeliculasDaoMocklmpl
 import es.murallaromana.pmdm.model.entidades.Pelicula
 
-class ListaPeliculasActivity3 : AppCompatActivity() {
+class ListaPeliculasActivity3: AppCompatActivity() {
 
     private lateinit var biding3 : ActivityListaMain3Binding
 
@@ -25,11 +26,13 @@ class ListaPeliculasActivity3 : AppCompatActivity() {
 
          // boton añadir
          var añadir = biding3.btAnhadir
-         val añadirPeli= Intent(this, AnhadirPeliculaActivity::class.java) //para llamar a la pantalla de detalle
+
          //cuando pulse el boton añadir
          añadir.setOnClickListener(){
-            startActivity(añadirPeli)
+             val añadirPeli= Intent(this, AnhadirPeliculaActivity::class.java) //para llamar a la pantalla de detalle
+             startActivity(añadirPeli)
          }
+        setTitle("Lista de películas")
 
         // Asigno un LayoutManager vertical
         biding3.rvListaPeliculas.layoutManager=LinearLayoutManager(this)

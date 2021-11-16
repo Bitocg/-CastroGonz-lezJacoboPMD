@@ -26,6 +26,7 @@ class RegistroMainActivity2 : AppCompatActivity() {
             onBackPressed()
         }
 
+        setTitle("Registro de películas")
 
         val inicio= Intent(this, MainActivity::class.java) //para llamar al inicio
 
