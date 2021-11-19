@@ -15,7 +15,7 @@ class detalleActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val pelicula = intent.extras?.get("pelicula")as Pelicula
-        setTitle("Detalle de :"+pelicula.titulo)
+        setTitle("Detalles de: "+pelicula.titulo)
 
 
         binding.txtDetalleTitulo.setText("Título: "+pelicula.titulo)

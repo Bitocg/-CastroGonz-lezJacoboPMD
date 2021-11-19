@@ -64,7 +64,7 @@ class ListaPeliculasAdapter(val peliculas : List<Pelicula>, val activity: Activi
         // holder.enlazarDatos(pelicula) si lo hago de la otra forma con PeliculaViewHolder
         holder.txtGenero.text = "Género: " + pelicula.genero
         holder.txtTitulo.text = "Título: " + pelicula.titulo
-        holder.txtNota.text = "Nota: " + pelicula.nota
+        holder.txtNota.text = pelicula.nota
         holder.txtAutor.text = "Autor: " + pelicula.autor
 
         //Libreria picasso

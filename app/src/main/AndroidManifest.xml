@@ -13,18 +13,23 @@
         android:theme="@style/Theme.PruebaSubir">
         <activity
             android:name=".activities.AnhadirPeliculaActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".activities.detalleActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".activities.ListaPeliculasActivity3"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".activities.RegistroMainActivity2"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".activities.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
