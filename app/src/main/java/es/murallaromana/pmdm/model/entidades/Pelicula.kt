@@ -10,7 +10,6 @@ class Pelicula (
     var telefono: String,
     var url: String,
     var resumen: String,
-        ):Serializable{
+        ):Serializable
 
 
-}

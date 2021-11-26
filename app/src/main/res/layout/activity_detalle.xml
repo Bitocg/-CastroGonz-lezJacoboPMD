@@ -12,65 +12,78 @@
 
     <TextView
         android:id="@+id/txtDetalleResumen"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDetalleTelefono" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/txtDetalleTelefono"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/txtDetalleNota"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/txtDetalleGenero" />
 
     <TextView
         android:id="@+id/txtDetalleTelefono"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="TextView"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="8888888888888"
+        android:textSize="16sp"
+        android:textColorLink="@color/azul"
+        android:autoLink="phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/txtDetalleNota" />
 
     <TextView
         android:id="@+id/txtDetalleGenero"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/txtDetalleAutor" />
 
     <TextView
         android:id="@+id/txtDetalleTitulo"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/DetalleImagen" />
 
     <ImageView
         android:id="@+id/DetalleImagen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="210dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.409"
@@ -80,14 +93,33 @@
 
     <TextView
         android:id="@+id/txtDetalleAutor"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/txtDetalleTitulo" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="13dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Teléfono: "
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/txtDetalleNota" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

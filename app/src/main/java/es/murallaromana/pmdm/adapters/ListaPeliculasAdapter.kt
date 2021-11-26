@@ -9,18 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.NonNull
-import androidx.appcompat.view.menu.ActionMenuItemView
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import es.murallaromana.pmdm.R
 import es.murallaromana.pmdm.activities.AnhadirPeliculaActivity
 import es.murallaromana.pmdm.activities.detalleActivity
-import es.murallaromana.pmdm.databinding.ItemPeliculasBinding
 import es.murallaromana.pmdm.model.entidades.Pelicula
 
-class ListaPeliculasAdapter(val peliculas : List<Pelicula>, val activity: Activity ,val context: Context) :
+class ListaPeliculasAdapter(val peliculas : MutableList<Pelicula>, val activity: Activity ,val context: Context) :
 
     RecyclerView.Adapter<ListaPeliculasAdapter.PeliculaHolder>() {
 
@@ -28,7 +25,7 @@ class ListaPeliculasAdapter(val peliculas : List<Pelicula>, val activity: Activi
     // Este método mantiene referencia a los componentes visuales (en este caso al nombre de la peli)
     class PeliculaHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtGenero = itemView.findViewById<TextView>(R.id.txtGenero)
-        val itemLista = itemView.findViewById<ConstraintLayout>(R.id.itemLista)
+        val itemLista = itemView.findViewById<CardView>(R.id.itemLista)
         val txtTitulo = itemView.findViewById<TextView>(R.id.txtTitulo)
         val txtNota = itemView.findViewById<TextView>(R.id.txtNota)
         val txtAutor = itemView.findViewById<TextView>(R.id.txtAutor)
@@ -70,30 +67,23 @@ class ListaPeliculasAdapter(val peliculas : List<Pelicula>, val activity: Activi
         //Libreria picasso
         Picasso.get().load(pelicula.url).into(holder.imagen)
 
-
-
-
         holder.itemLista.setOnClickListener() {
             val mensaje = AlertDialog.Builder(context)
             mensaje.setTitle("Pelicula")
             mensaje.setMessage("Que quieres hacer:")
             mensaje.setPositiveButton("Ver los detalles de la película") { dialogInterface, i ->
-
                 val intent = Intent(context, detalleActivity::class.java)
                 intent.putExtra("pelicula", pelicula)
 
-                activity.startActivity(intent)
 
+                activity.startActivity(intent)
             }
-            mensaje.setNegativeButton("Editar película") { dialogInterface, i ->
+            mensaje.setNegativeButton("Editar o borrar película") { dialogInterface, i ->
                 val editarPeli = Intent(context,AnhadirPeliculaActivity::class.java)
                 editarPeli.putExtra("pelicula", pelicula)
+                editarPeli.putExtra("posicion", position)
 
                 activity.startActivity(editarPeli)
-
-            }
-            mensaje.setNeutralButton("Borrar la película") { dialogInterface, i ->
-
             }
             mensaje.show()
 

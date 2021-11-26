@@ -2,11 +2,17 @@ package es.murallaromana.pmdm.activities
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import es.murallaromana.pmdm.App
+import es.murallaromana.pmdm.R
 import es.murallaromana.pmdm.adapters.ListaPeliculasAdapter
 import es.murallaromana.pmdm.databinding.ActivityListaMain3Binding
 import es.murallaromana.pmdm.model.dao.PeliculaDao
@@ -38,8 +44,7 @@ class ListaPeliculasActivity3: AppCompatActivity() {
         biding3.rvListaPeliculas.layoutManager=LinearLayoutManager(this)
 
         // Cojo la lista creada
-        val peliculasdao = PeliculasDaoMocklmpl()
-        val listapeliculas = peliculasdao.getTodos()
+        val listapeliculas = App.peliculas
 
         // Le paso la lista
         val layoutManager = LinearLayoutManager(this)
@@ -49,8 +54,16 @@ class ListaPeliculasActivity3: AppCompatActivity() {
         biding3.rvListaPeliculas.adapter = adapter
         biding3.rvListaPeliculas.layoutManager = layoutManager
 
-
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        val adapter = ListaPeliculasAdapter(App.peliculas, this, this)
+        biding3.rvListaPeliculas.adapter=adapter
+    }
+
+
 
 
 }
