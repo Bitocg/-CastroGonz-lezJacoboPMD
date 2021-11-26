@@ -63,6 +63,11 @@ class ListaPeliculasActivity3: AppCompatActivity() {
         biding3.rvListaPeliculas.adapter=adapter
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true)
+    }
+
 
 
 
