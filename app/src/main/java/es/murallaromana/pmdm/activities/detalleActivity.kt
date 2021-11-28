@@ -22,12 +22,12 @@ class detalleActivity : AppCompatActivity() {
         setTitle("Detalles de: "+pelicula.titulo)
 
 
-        binding.txtDetalleTitulo.setText("Título: "+pelicula.titulo)
-        binding.txtDetalleAutor.setText("Autor: "+pelicula.autor)
-        binding.txtDetalleGenero.setText("Género: "+pelicula.genero)
-        binding.txtDetalleNota.setText("Nota: "+pelicula.nota)
+        binding.txtDetalleTitulo.setText(pelicula.titulo)
+        binding.txtDetalleAutor.setText(pelicula.autor)
+        binding.txtDetalleGenero.setText(pelicula.genero)
+        binding.txtDetalleNota.setText(pelicula.nota)
         binding.txtDetalleTelefono.setText(pelicula.telefono)
-        binding.txtDetalleResumen.setText("Resumen: "+pelicula.resumen)
+        binding.txtDetalleResumen.setText(pelicula.resumen)
 
         Picasso.get().load(pelicula.url).into(binding.DetalleImagen)
 
