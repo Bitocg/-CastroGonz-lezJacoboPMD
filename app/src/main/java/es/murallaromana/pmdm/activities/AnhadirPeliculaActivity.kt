@@ -1,5 +1,6 @@
 package es.murallaromana.pmdm.activities
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +16,7 @@ import es.murallaromana.pmdm.model.dao.PeliculaDao
 import es.murallaromana.pmdm.model.dao.PeliculasDaoMocklmpl
 import es.murallaromana.pmdm.model.entidades.Pelicula
 
-class AnhadirPeliculaActivity : AppCompatActivity() {
+class AnhadirPeliculaActivity: AppCompatActivity() {
     private  lateinit var binding: ActivityAnhadirPeliculaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,11 +56,18 @@ class AnhadirPeliculaActivity : AppCompatActivity() {
 
             if(pelicula!=null){ //Si hay una pelicula que la borre
                 if (posicion != null) {
-                    App.peliculas.removeAt(posicion)
-                    Toast.makeText(this , "Película borrada", Toast.LENGTH_SHORT).show()
-                    finish()
+                    val mensaje = AlertDialog.Builder(this)
+                    mensaje.setTitle("Borrar pelicula")
+                    //mensaje.setMessage("Seguro que quieres borrarla:")
+                    mensaje.setPositiveButton("Si") { dialogInterface, i ->
+                        App.peliculas.removeAt(posicion)
+                        Toast.makeText(this , "Película borrada", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                    mensaje.setNegativeButton("No") { dialogInterface, i ->
+                    }
+                    mensaje.show()
                 }
-
             }
             else{
                 //Que vacíe los txt
