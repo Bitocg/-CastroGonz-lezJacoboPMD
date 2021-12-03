@@ -22,7 +22,7 @@
             android:id="@+id/txtAutorA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Autor: " />
+            android:hint="@string/autor" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,7 +55,7 @@
             android:id="@+id/txtTelefonoA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Teléfono:"
+            android:hint="@string/tel_fono"
             android:inputType="phone"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,7 +72,7 @@
             android:id="@+id/txtUrlA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Url:" />
+            android:hint="@string/url" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -88,7 +88,7 @@
             android:id="@+id/txtTituloA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Título" />
+            android:hint="@string/t_tulo" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -104,7 +104,7 @@
             android:id="@+id/txtGeneroA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Género:" />
+            android:hint="@string/g_nero" />
     </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -122,7 +122,7 @@
                 android:id="@+id/txtResumenA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Resumen:" />
+                android:hint="@string/resumen" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
