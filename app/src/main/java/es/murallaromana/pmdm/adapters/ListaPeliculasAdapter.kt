@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import es.murallaromana.pmdm.R
 import es.murallaromana.pmdm.activities.AnhadirPeliculaActivity
-import es.murallaromana.pmdm.activities.detalleActivity
+import es.murallaromana.pmdm.activities.DetalleActivity
 import es.murallaromana.pmdm.model.entidades.Pelicula
 
 class ListaPeliculasAdapter(val peliculas : MutableList<Pelicula>, val activity: Activity ,val context: Context) :
@@ -72,7 +72,7 @@ class ListaPeliculasAdapter(val peliculas : MutableList<Pelicula>, val activity:
             mensaje.setTitle("Pelicula")
             mensaje.setMessage("Que quieres hacer:")
             mensaje.setPositiveButton("Ver los detalles de la película") { dialogInterface, i ->
-                val intent = Intent(context, detalleActivity::class.java)
+                val intent = Intent(context, DetalleActivity::class.java)
                 intent.putExtra("pelicula", pelicula)
 
 

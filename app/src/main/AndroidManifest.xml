@@ -21,20 +21,20 @@
             android:windowSoftInputMode="stateHidden"
             android:exported="true" />
         <activity
-            android:name=".activities.detalleActivity"
+            android:name=".activities.DetalleActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
         <activity
-            android:name=".activities.ListaPeliculasActivity3"
+            android:name=".activities.ListaPeliculasActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
         <activity
-            android:name=".activities.RegistroMainActivity2"
+            android:name=".activities.RegistroMainActivity"
             android:screenOrientation="portrait"
             android:exported="true"
             android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.InicioActivity"
             android:screenOrientation="portrait"
             android:exported="true"
             android:windowSoftInputMode="stateHidden">

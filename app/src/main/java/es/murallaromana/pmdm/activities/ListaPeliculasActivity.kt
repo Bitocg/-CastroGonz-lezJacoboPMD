@@ -19,7 +19,7 @@ import es.murallaromana.pmdm.model.dao.PeliculaDao
 import es.murallaromana.pmdm.model.dao.PeliculasDaoMocklmpl
 import es.murallaromana.pmdm.model.entidades.Pelicula
 
-class ListaPeliculasActivity3: AppCompatActivity() {
+class ListaPeliculasActivity: AppCompatActivity() {
 
     private lateinit var biding3 : ActivityListaMain3Binding
 

@@ -2,16 +2,13 @@ package es.murallaromana.pmdm.activities
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Button
 import android.widget.Toast
-import es.murallaromana.pmdm.databinding.ActivityMainBinding
 import es.murallaromana.pmdm.databinding.ActivityRegistroMain2Binding
 
-class RegistroMainActivity2 : AppCompatActivity() {
+class RegistroMainActivity : AppCompatActivity() {
 
 
     private lateinit var binding2: ActivityRegistroMain2Binding
@@ -30,7 +27,7 @@ class RegistroMainActivity2 : AppCompatActivity() {
 
         setTitle("Registro de películas")
 
-        val inicio= Intent(this, MainActivity::class.java) //para llamar al inicio
+        val inicio= Intent(this, InicioActivity::class.java) //para llamar al inicio
 
         //botón registrarse las guarda en las sharedPreference de android
         binding2.btregistrarse.setOnClickListener {
@@ -98,7 +95,4 @@ class RegistroMainActivity2 : AppCompatActivity() {
         }
         return false
     }
-
-
-
 }
