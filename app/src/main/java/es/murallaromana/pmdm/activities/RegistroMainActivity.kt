@@ -66,6 +66,7 @@ class RegistroMainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Las contraseñas no coinciden",Toast.LENGTH_SHORT).show()
             }
             else {
+                //Paso los datos
                 editor.putString("gmail", binding2.textGmail.text.toString())
                 editor.putString("contraseña", binding2.textContra.text.toString())
                 editor.putString("usuario", binding2.textUsuario.text.toString())
