@@ -33,25 +33,12 @@ class ListaPeliculasAdapter(val peliculas : MutableList<Pelicula>, val activity:
 
     }
 
-    /*class PeliculaViewHolder(val itemBinding : ItemPeliculasBinding) : RecyclerView.ViewHolder(itemBinding.root) {
-        fun enlazarDatos(pelicula: Pelicula) {
-            itemBinding.txtAutor.setText(pelicula.autor)
-
-            val inten = Intent(itemBinding.root.context, detalleActivity::class.java)
-
-        }
-    }*/
-
 
     // Este método se ocupa de INFLAR la vista (el item_country.xml)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeliculaHolder {
         val inflater = LayoutInflater.from(parent.context).inflate(R.layout.item_peliculas, parent, false)
         return PeliculaHolder(inflater)
 
-        /* si lo quiero hacer de la otra forma
-        val layoutInflater = LayoutInflater.from(parent.context)
-        return PeliculaViewHolder(ItemPeliculasBinding.inflate(layoutInflater,parent,false))
-        */
     }
 
     // Este método devuelve el número de elementos de la lista

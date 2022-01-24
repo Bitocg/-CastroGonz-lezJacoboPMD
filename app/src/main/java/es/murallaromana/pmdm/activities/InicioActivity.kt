@@ -37,9 +37,12 @@ class InicioActivity : AppCompatActivity() {
         val lista= Intent(this, ListaPeliculasActivity::class.java) //para llamar a la pantalla de lista
 
         binding.btIniciar.setOnClickListener{
-            if(gmail!=binding.textoEmail.text.toString() || usuario!=binding.textoUsuario.toString() || contraseña!=binding.textoContra.toString()){
+            if(gmail!=binding.textoEmail.text.toString() || usuario!=binding.textoUsuario.text.toString() || contraseña!=binding.textoContra.text.toString()) {
                 Toast.makeText(this , "Datos incorrectos", Toast.LENGTH_SHORT).show()
-            }else{
+            }else if(gmail=="usuario@gmail.com" || usuario =="usuario" || contraseña=="contraseña"){
+                Toast.makeText(this , "Tienes que registrarte", Toast.LENGTH_SHORT).show()
+            }
+            else{
                 startActivity(lista)
             }
         }
