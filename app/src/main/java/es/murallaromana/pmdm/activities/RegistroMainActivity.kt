@@ -1,12 +1,22 @@
 package es.murallaromana.pmdm.activities
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import es.murallaromana.pmdm.databinding.ActivityRegistroMain2Binding
+import es.murallaromana.pmdm.model.dao.retrofit.RetrofitCliente
+import es.murallaromana.pmdm.model.dao.retrofit.UserService
+import es.murallaromana.pmdm.model.entidades.User
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class RegistroMainActivity : AppCompatActivity() {
 
@@ -35,7 +45,7 @@ class RegistroMainActivity : AppCompatActivity() {
             val editor = sharedPref.edit()
             val contraseña = binding2.textContra.text.toString()
 
-            //Compruebo que ningún campo este vacío
+            /*//Compruebo que ningún campo este vacío
             if(TextUtils.equals(binding2.textContra.text.toString() , "" ) || binding2.text2Contra.text.toString()=="" ||
             binding2.textGmail.text.toString().trim()=="" || binding2.textUsuario.text.toString().trim()=="" ||
             binding2.textNombre.text.toString().trim()=="" || binding2.textApellido.text.toString().trim()=="" ) {
@@ -65,14 +75,47 @@ class RegistroMainActivity : AppCompatActivity() {
             else if(!TextUtils.equals(binding2.textContra.text.toString() , binding2.text2Contra.text.toString())){
                 Toast.makeText(this, "Las contraseñas no coinciden",Toast.LENGTH_SHORT).show()
             }
-            else {
+            else {*/
+                //nuevo codigo
+                val u = User(binding2.textGmail.text.toString(), binding2.textContra.text.toString())
+
+                val registroCall = RetrofitCliente.apiRetrofit.signup(u)
+
+                registroCall.enqueue(object: Callback<Unit> {
+                    override fun onFailure(call: Call<Unit>, t: Throwable) {
+                        Log.d("respuesta: onFailure", t.toString())
+                    }
+
+                    @SuppressLint("CommitPrefEdits")
+                    override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                        Log.d("respuesta: onResponse", response.toString())
+
+                        if (response.code() > 299 || response.code() < 200) {
+                            Toast.makeText(this@RegistroMainActivity,"No se pudo crear el usuario",Toast.LENGTH_SHORT).show()
+                        } 
+                        else {
+                            Toast.makeText(this@RegistroMainActivity,"Usuario creado",Toast.LENGTH_SHORT).show()
+
+
+                            //Paso los datos
+                            editor.putString("gmail", binding2.textGmail.text.toString())
+                            editor.putString("contraseña", binding2.textContra.text.toString())
+                            editor.putString("usuario", binding2.textUsuario.text.toString())
+
+                            //Inicio activity
+                            startActivity(inicio)
+
+                        }
+                    }
+                })
+
                 //Paso los datos
-                editor.putString("gmail", binding2.textGmail.text.toString())
-                editor.putString("contraseña", binding2.textContra.text.toString())
-                editor.putString("usuario", binding2.textUsuario.text.toString())
-                editor.commit()
-                startActivity(inicio)
-            }
+
+
+
+
+
+            //}
         }
     }
 
