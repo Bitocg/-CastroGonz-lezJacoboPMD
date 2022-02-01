@@ -108,13 +108,6 @@ class RegistroMainActivity : AppCompatActivity() {
                         }
                     }
                 })
-
-                //Paso los datos
-
-
-
-
-
             //}
         }
     }
