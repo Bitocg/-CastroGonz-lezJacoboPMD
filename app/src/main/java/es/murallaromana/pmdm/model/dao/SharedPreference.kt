@@ -7,9 +7,13 @@ class SharedPreference(
     val context: Context
 ) {
     val nombreArchivo = "base de datos"
-    val pref = context.getSharedPreferences(nombreArchivo,0)
+    val preferences = context.getSharedPreferences(nombreArchivo,0)
 
     fun guardar(token: String){
-        pref.edit().putString("token",token).commit()
+        preferences.edit().putString("token",token).commit()
+    }
+
+    fun recogerToken(): String?{
+        return preferences.getString("token","")
     }
 }

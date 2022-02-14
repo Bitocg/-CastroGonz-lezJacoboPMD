@@ -13,5 +13,5 @@ object RetrofitCliente {
         return retrofit
     }
 
-    val apiRetrofit: UserService = getRetrofit().create(UserService::class.java)
+    val API_RETROFIT: Api = getRetrofit().create(Api::class.java)
 }

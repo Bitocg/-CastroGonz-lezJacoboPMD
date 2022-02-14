@@ -38,7 +38,6 @@ class ListaPeliculasAdapter(val peliculas : MutableList<Pelicula>, val activity:
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeliculaHolder {
         val inflater = LayoutInflater.from(parent.context).inflate(R.layout.item_peliculas, parent, false)
         return PeliculaHolder(inflater)
-
     }
 
     // Este método devuelve el número de elementos de la lista
@@ -60,16 +59,15 @@ class ListaPeliculasAdapter(val peliculas : MutableList<Pelicula>, val activity:
             mensaje.setMessage("Que quieres hacer:")
             mensaje.setPositiveButton("Ver los detalles de la película") { dialogInterface, i ->
                 val intent = Intent(context, DetalleActivity::class.java)
-                intent.putExtra("pelicula", pelicula)
-
-
+                intent.putExtra( "id" , pelicula?.id)
+                //intent.putExtra("pelicula", pelicula)
                 activity.startActivity(intent)
             }
             mensaje.setNegativeButton("Editar o borrar película") { dialogInterface, i ->
                 val editarPeli = Intent(context,AnhadirPeliculaActivity::class.java)
                 editarPeli.putExtra("pelicula", pelicula)
-                editarPeli.putExtra("posicion", position)
-
+                //editarPeli.putExtra("posicion", position)
+                editarPeli.putExtra("id", pelicula?.id)
                 activity.startActivity(editarPeli)
             }
             mensaje.show()

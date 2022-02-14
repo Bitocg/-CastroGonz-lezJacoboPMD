@@ -1,66 +1,90 @@
 package es.murallaromana.pmdm.activities
 
-import android.content.Context
+import android.app.AlertDialog
 import android.content.Intent
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
-import es.murallaromana.pmdm.App
-import es.murallaromana.pmdm.R
 import es.murallaromana.pmdm.adapters.ListaPeliculasAdapter
 import es.murallaromana.pmdm.databinding.ActivityListaMain3Binding
-import es.murallaromana.pmdm.model.dao.PeliculaDao
-import es.murallaromana.pmdm.model.dao.PeliculasDaoMocklmpl
+import es.murallaromana.pmdm.model.dao.SharedPreference
+import es.murallaromana.pmdm.model.dao.retrofit.RetrofitCliente
 import es.murallaromana.pmdm.model.entidades.Pelicula
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ListaPeliculasActivity: AppCompatActivity() {
 
-    private lateinit var biding3 : ActivityListaMain3Binding
-
+    private lateinit var binding : ActivityListaMain3Binding
+    private lateinit var preferences: SharedPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-        biding3 = ActivityListaMain3Binding.inflate(layoutInflater)
-        setContentView(biding3.root)
-
-         // boton añadir
-         var añadir = biding3.btAnhadir
-
-         //cuando pulse el boton añadir
-         añadir.setOnClickListener(){
-             val añadirPeli= Intent(this, AnhadirPeliculaActivity::class.java) //para llamar a la pantalla de detalle
-             startActivity(añadirPeli)
-         }
         setTitle("Lista de películas")
 
-        // Asigno un LayoutManager vertical
-        biding3.rvListaPeliculas.layoutManager=LinearLayoutManager(this)
+        super.onCreate(savedInstanceState)
 
-        // Cojo la lista creada
-        val listapeliculas = App.peliculas
+        binding = ActivityListaMain3Binding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Le paso la lista
-        val layoutManager = LinearLayoutManager(this)
-        var adapter = ListaPeliculasAdapter(listapeliculas,this,this)
+        preferences= SharedPreference(applicationContext)
 
-        //
-        biding3.rvListaPeliculas.adapter = adapter
-        biding3.rvListaPeliculas.layoutManager = layoutManager
+        val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { tengoPermiso: Boolean ->
+            if (!tengoPermiso) {
+                ActivityCompat.requestPermissions(this,arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),1)
+            }
+        }
 
+        requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+
+        // boton añadir
+        var añadir = binding.btAnhadir
+        añadir.setOnClickListener(){
+            val añadirPeli= Intent(this, AnhadirPeliculaActivity::class.java)
+            startActivity(añadirPeli)
+        }
     }
 
     override fun onResume() {
         super.onResume()
+        val context = this
 
-        val adapter = ListaPeliculasAdapter(App.peliculas, this, this)
-        biding3.rvListaPeliculas.adapter=adapter
+        val token = preferences.recogerToken()
+
+        val call = RetrofitCliente.API_RETROFIT.getPeliculas2("Bearer" + token) //Llamamos a Retrofit
+
+        call.enqueue(object : Callback<List<Pelicula>> {
+            override fun onFailure(call: Call<List<Pelicula>>, t: Throwable) {
+                Log.d("respuesta: onFailure", t.toString())
+            }
+
+            override fun onResponse(
+                call: Call<List<Pelicula>>,
+                response: Response<List<Pelicula>>
+            ) {
+                if (response.code() > 299 || response.code() < 200) {
+                    val adb = AlertDialog.Builder(context)
+                    adb.setTitle("Lista de peliculas")
+                    adb.setMessage("La lista de películas no pudo cargarse correctamente")
+                    adb.setPositiveButton("Aceptar") { dialog, which -> }
+                    adb.show()
+                } else {
+                    val listaPelicula: List<Pelicula>? = response.body()
+                    val layoutManager = LinearLayoutManager(context)
+                    val adapter = ListaPeliculasAdapter(
+                        listaPelicula as MutableList<Pelicula>,
+                        context,
+                        this@ListaPeliculasActivity
+                    )
+                    binding.rvListaPeliculas.adapter = adapter
+                    binding.rvListaPeliculas.layoutManager = layoutManager
+                }
+            }
+        })
     }
 
     override fun onBackPressed() {

@@ -30,15 +30,15 @@ class InicioActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("datos",Context.MODE_PRIVATE)
 
         //Creo los datos que debería haber
-        val gmail = sharedPreferences.getString("gmail","usuario@gmail.com").toString() //coges el email
-        val usuario = sharedPreferences.getString("usuario","usuario").toString() //coges el usuario
-        val contraseña = sharedPreferences.getString("contraseña","contraseña").toString()
+        val gmail = sharedPreferences.getString("gmail","c3@gmail.com").toString() //coges el email
+        //val usuario = sharedPreferences.getString("usuario","usuario").toString() //coges el usuario
+        val contraseña = sharedPreferences.getString("contraseña","1").toString()
         binding.textoEmail.setText(gmail)
-        binding.textoUsuario.setText(usuario)
+        //binding.textoUsuario.setText(usuario)
         binding.textoContra.setText(contraseña)
 
 
-        val llamarApi: Call<List<Pelicula>> = RetrofitCliente.apiRetrofit.getPeliculas()
+        val llamarApi: Call<List<Pelicula>> = RetrofitCliente.API_RETROFIT.getPeliculas()
         llamarApi.enqueue(object : Callback<List<Pelicula>> {
             override fun onResponse(call: Call<List<Pelicula>>,response: Response<List<Pelicula>>) {
                 Toast.makeText(context, response.body().toString(), Toast.LENGTH_SHORT).show()
@@ -67,7 +67,7 @@ class InicioActivity : AppCompatActivity() {
             }*/
             val correo = binding.textoEmail.text.toString()
             val contraseña = binding.textoContra.text.toString()
-            val call: Call<Token> = RetrofitCliente.apiRetrofit.login(User(correo, contraseña))
+            val call: Call<Token> = RetrofitCliente.API_RETROFIT.login(User(correo, contraseña))
             call.enqueue(object : Callback<Token> {
                 override fun onFailure(call: Call<Token>, t: Throwable) {
                     Log.d("respuesta: onFailure", t.toString())
