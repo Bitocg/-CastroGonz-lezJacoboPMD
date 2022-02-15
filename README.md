@@ -5,7 +5,7 @@
 ### La aplicación dispone de:
 
 1. Login
-![login]("./Imagenes/login.PNG")
+![login]("./Imagenes/login.png")
 2. Registro
 3. Lista de películas
 4. Detalle de cada película
